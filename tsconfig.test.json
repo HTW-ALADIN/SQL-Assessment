@@ -1,0 +1,12 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"rootDir": ".", // allow both src/ and test/
+		"baseUrl": ".", // required for paths to work
+		"paths": {
+			"@/*": ["src/*"] // reuse your app-level path alias
+		},
+		"types": ["vitest/globals"] // enables describe/test/expect without imports
+	},
+	"include": ["src/**/*", "test/**/*"]
+}

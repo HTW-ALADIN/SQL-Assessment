@@ -1,0 +1,47 @@
+{
+    "name": "sql_assessment",
+    "version": "1.0.0",
+    "license": "MIT",
+    "type": "module",
+    "main": "build/server.js",
+    "scripts": {
+        "build": "rm tsconfig.tsbuildinfo 2> /dev/null || true && rm -rf dist 2> /dev/null || true && node esbuild.config.js && npm run build:types && npx tsc-alias",
+        "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist",
+        "check": "biome check .",
+        "fix": "biome check --fix .",
+        "format": "biome format --write .",
+        "lint": "biome lint .",
+        "test": "vitest run --silent",
+        "test:coverage": "vitest run --coverage --silent"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.5",
+        "postgres": "^3.4.7",
+        "winston": "^3.17.0"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.3.7",
+        "@commitlint/config-conventional": "^20.0.0",
+        "@tsconfig/node20": "^20.1.4",
+        "@types/express": "^5.0.3",
+        "@types/node": "^22.10.5",
+        "@types/pg": "^8.15.6",
+        "@vitest/coverage-v8": "^4.0.13",
+        "commitlint": "^20.1.0",
+        "pg": "^8.16.3",
+        "pg-mem": "^3.0.5",
+        "vite-tsconfig-paths": "^5.1.4",
+        "vitest": "^4.0.14"
+    },
+    "engines": {
+        "node": ">=22.0.0"
+    },
+    "volta": {
+        "node": "22.13.1",
+        "pnpm": "10.0.0"
+    },
+    "recipe": {
+        "name": "tiramisu",
+        "version": "1.0.0"
+    }
+}
