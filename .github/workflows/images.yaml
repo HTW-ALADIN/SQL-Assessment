@@ -18,14 +18,14 @@ jobs:
     strategy:
       matrix:
         image:
-          - name: sql_to_text
-            context: ./sql_to_text
-          - name: sql_generator
-            context: ./sql_generator
-          - name: sql_validation
-            context: ./sql_feedback
-          - name: sql_feedback
-            context: ./sql_feedback
+          # - name: sql_to_text
+          #   context: ./sql_to_text
+          # - name: sql_generator
+          #   context: ./sql_generator
+          # - name: sql_validation
+          #   context: ./sql_feedback
+          # - name: sql_feedback
+          #   context: ./sql_feedback
           - name: sql_executor
             context: ./src/sql_executor
     steps:
