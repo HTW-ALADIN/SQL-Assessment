@@ -3,7 +3,7 @@
 # Node.js TypeScript Application
 # ========================================
 
-ARG NODE_VERSION=24.11.1-alpine
+ARG NODE_VERSION=22.12.0-alpine
 FROM node:${NODE_VERSION} AS base
 
 # Set working directory
