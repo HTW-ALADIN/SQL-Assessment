@@ -63,7 +63,7 @@ RUN chown -R nodejs:nodejs /app
 ARG NODE_VERSION=24.11.1-alpine
 FROM node:${NODE_VERSION} AS production
 
-ARG INSTRUCTION="select * from test;"
+ARG INSTRUCTION='{ "referenceResult": [{ "PROZ_ARB": 50, "PNR": 7, "ANGNR": 336 },{ "PROZ_ARB": 2, "PNR": 50, "ANGNR": 27}], "studentResult": [{ "PROZ_ARB": 50, "PNR": 7, "ANGNR": 336 }]}'
 ENV INSTRUCTION=${INSTRUCTION}
 
 ENV POSTGRES_HOST=localhost
@@ -96,7 +96,7 @@ COPY --from=build --chown=nodejs:nodejs /app/dist ./dist
 USER nodejs
 
 # Start production server
-CMD node dist/sql_executor/Executor.js $INSTRUCTION
+CMD node dist/compare_tabular_results/Comparator.js $INSTRUCTION
 
 # ========================================
 # Test Stage

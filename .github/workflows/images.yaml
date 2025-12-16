@@ -28,6 +28,10 @@ jobs:
           #   context: ./sql_feedback
           - name: sql_executor
             context: ./src/sql_executor
+          - name: db_introspector
+            context: ./src/db_introspection
+          - name: result_set_comparator
+            context: ./src/sql_executor
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5

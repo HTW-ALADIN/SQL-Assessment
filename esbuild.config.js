@@ -4,7 +4,7 @@ import { build, context } from "esbuild";
 import { esbuildVersion } from "vitest/node";
 
 const buildOptions = {
-	entryPoints: ["./src/sql_executor/Executor.ts", "./src/compare_tabular_results/Comparator.ts"],
+	entryPoints: ["./src/sql_executor/Executor.ts", "./src/compare_tabular_results/Comparator.ts", "./src/db_introspection/Introspector.ts"],
 	bundle: true,
 	outdir: "dist",
 	format: "esm",
