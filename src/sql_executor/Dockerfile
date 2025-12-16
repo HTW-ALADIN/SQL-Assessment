@@ -3,7 +3,7 @@
 # Node.js TypeScript Application
 # ========================================
 
-ARG NODE_VERSION=22.12.0-alpine
+ARG NODE_VERSION=24.11.1-alpine
 FROM node:${NODE_VERSION} AS base
 
 # Set working directory
@@ -24,7 +24,7 @@ COPY package*.json ./
 
 # Install production dependencies
 RUN --mount=type=cache,target=/root/.npm,sharing=locked \
-    npm i --omit=dev && \
+    npm ci --omit=dev && \
     npm cache clean --force
 
 # Set proper ownership
@@ -38,9 +38,6 @@ FROM base AS build-deps
 # Copy package files
 COPY package*.json ./
 
-# Install all dependencies with build optimizations
-RUN npm i --no-audit --no-fund && \
-    npm cache clean --force
 
 # Create necessary directories and set permissions
 RUN mkdir -p /app/node_modules/.vite && \
