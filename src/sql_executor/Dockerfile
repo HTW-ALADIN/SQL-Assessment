@@ -39,8 +39,7 @@ FROM base AS build-deps
 COPY package*.json ./
 
 # Install all dependencies with build optimizations
-RUN --mount=type=cache,target=/root/.npm,sharing=locked \
-    npm i --no-audit --no-fund && \
+RUN npm i --no-audit --no-fund && \
     npm cache clean --force
 
 # Create necessary directories and set permissions
