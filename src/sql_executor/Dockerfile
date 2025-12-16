@@ -24,7 +24,7 @@ COPY package*.json ./
 
 # Install production dependencies
 RUN --mount=type=cache,target=/root/.npm,sharing=locked \
-    npm ci --omit=dev && \
+    npm i --omit=dev && \
     npm cache clean --force
 
 # Set proper ownership
@@ -40,7 +40,7 @@ COPY package*.json ./
 
 # Install all dependencies with build optimizations
 RUN --mount=type=cache,target=/root/.npm,sharing=locked \
-    npm ci --no-audit --no-fund && \
+    npm i --no-audit --no-fund && \
     npm cache clean --force
 
 # Create necessary directories and set permissions
