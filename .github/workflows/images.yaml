@@ -26,8 +26,8 @@ jobs:
             context: ./sql_feedback
           - name: sql_feedback
             context: ./sql_feedback
-          - name: sql_runner
-            context: ./sql_runner
+          - name: sql_executor
+            context: ./src/sql_executor
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5

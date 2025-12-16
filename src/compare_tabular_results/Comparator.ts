@@ -1,4 +1,4 @@
-import { Instruction, TableFormat } from "@/SharedTypes";
+import { TableFormat } from "@/SharedTypes";
 import { logger, LogLevels } from "@/Util/logger";
 import { DistanceMetric, levenshtein } from "@/Util/stringDistanceMetrics";
 
@@ -14,11 +14,9 @@ export interface ComparisonOptions {
 	comparisonStrategy: ComparisonStrategyType;
 }
 
-export interface ComparisonInstruction extends Instruction {
-	args: {
-		referenceResult: TableFormat;
-		studentResult: TableFormat;
-	};
+export interface ComparisonInstruction {
+	referenceResult: TableFormat;
+	studentResult: TableFormat;
 	options?: ComparisonOptions;
 }
 
@@ -72,8 +70,7 @@ if (process.argv[1] === import.meta.filename) {
 		let result = null;
 
 		try {
-			const { args, options } = JSON.parse(instruction) as ComparisonInstruction;
-			const { referenceResult, studentResult } = args;
+			const { referenceResult, studentResult, options } = JSON.parse(instruction) as ComparisonInstruction;
 			const comparisonStrategyType = (options?.comparisonStrategy as ComparisonStrategyType) ?? "levenshtein";
 			const comparisonStrategy = ComparisonStrategies[comparisonStrategyType];
 			const comparator = new Comparator(comparisonStrategy);

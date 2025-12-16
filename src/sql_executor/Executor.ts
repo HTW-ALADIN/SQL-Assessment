@@ -1,13 +1,7 @@
 import { client } from "@/Util/pg_client";
 import { Client } from "pg";
 import { logger, LogLevels } from "@/Util/logger";
-import { Instruction, TableFormat } from "@/SharedTypes";
-
-export interface SQLExecutionInstruction extends Instruction {
-	args: {
-		query: string;
-	};
-}
+import { TableFormat } from "@/SharedTypes";
 
 export type SQLExecutionResult = TableFormat | string | null;
 
@@ -38,12 +32,10 @@ export class Executor {
 /* v8 ignore next -- @preserve */
 if (process.argv[1] === import.meta.filename) {
 	(async () => {
-		const instruction = process.argv[2];
-		if (instruction) {
+		const query = process.argv[2];
+		if (query) {
 			let result = null;
 			try {
-				const { args } = JSON.parse(instruction) as SQLExecutionInstruction;
-				const { query } = args;
 				const executor = new Executor();
 				result = await executor.executeQuery(query);
 			} catch (error) {

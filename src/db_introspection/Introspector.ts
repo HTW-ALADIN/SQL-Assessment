@@ -1,5 +1,5 @@
 import config from "@/config/config";
-import { Instruction, TableFormat } from "@/SharedTypes";
+import { TableFormat } from "@/SharedTypes";
 import { logger, LogLevels } from "@/Util/logger";
 import { resolveTemplateString } from "@/Util/naiveStringTemplates";
 import { client } from "@/Util/pg_client";
@@ -10,8 +10,6 @@ export interface IntrospectionQueries {
 	foreignKeys: string;
 	primaryKeys: string;
 }
-
-export interface IntrospectionInstruction extends Instruction {}
 
 export type IntrospectionResult = {
 	tables: TableFormat;

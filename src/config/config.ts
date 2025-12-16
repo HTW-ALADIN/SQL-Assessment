@@ -27,7 +27,7 @@ const config: Config = {
 	postgresPassword: getRequiredEnv("POSTGRES_PASSWORD"),
 	postgresDb: getRequiredEnv("POSTGRES_DB"),
 	postgresSchema: process.env.POSTGRES_SCHEMA || "public",
-	logLevel: process.env.LOGLEVEL ?? "info",
+	logLevel: process.env.LOG_LEVEL ?? "info",
 };
 
 export default config;
